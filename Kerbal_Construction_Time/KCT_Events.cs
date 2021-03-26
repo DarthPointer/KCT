@@ -19,6 +19,12 @@ namespace KerbalConstructionTime
         public static EventData<ProtoTechNode> onTechCompleted;
         public static EventData<KCT_UpgradingBuilding> onFacilityUpgradeQueued;
         public static EventData<KCT_UpgradingBuilding> onFacilityUpgradeComplete;
+        /// <summary>
+        /// bool argument "editorIsBypassed".
+        /// True if it is duplication of existing vessel and scheduling from build plans.
+        /// False for editing, scheduling new vessel and recovery.
+        /// </summary>
+        public static EventData<(ShipConstruct, bool)> onVesselAddedToStorageOrScheduled;
 
         public KCT_Events()
         {
@@ -98,6 +104,7 @@ namespace KerbalConstructionTime
             onTechCompleted = new EventData<ProtoTechNode>("OnKctTechCompleted");
             onFacilityUpgradeQueued = new EventData<KCT_UpgradingBuilding>("OnKctFacilityUpgradeQueued");
             onFacilityUpgradeComplete = new EventData<KCT_UpgradingBuilding>("OnKctFacilityUpgradeComplete");
+            onVesselAddedToStorageOrScheduled = new EventData<(ShipConstruct, bool)>("OnKctVesselAddedToStorageOrScheduled");
             createdEvents = true;
         }
 
